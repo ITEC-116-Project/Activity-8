@@ -25,6 +25,16 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## API Documentation (Swagger)
+
+This project exposes interactive API documentation via Swagger UI.
+
+- Access the docs at: `http://localhost:5000/api` (or your `PORT`)
+- Authorization: Uses Bearer token if your routes require JWT
+- Location: Configured in `src/main.ts` using `@nestjs/swagger`
+
+No extra steps needed—packages are already installed and configured.
+
 ## Project setup
 
 ```bash
