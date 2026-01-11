@@ -1,0 +1,33 @@
+/*
+  NOTE: The previous version of this file defined a `#root` rule that set
+  a max-width and centered the app. That limited the App component's
+  ability to display a full-viewport background. The `#root` selector is
+  now defined in `index.css` (which sets full-width / min-height). Keep
+  this file focused on component-level styles and resets only.
+*/
+
+/* Keep the global reset but avoid redefining #root here (it's defined in index.css). */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(15, 118, 110, 0.3);
+  border-radius: 10px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(15, 118, 110, 0.5);
+}
