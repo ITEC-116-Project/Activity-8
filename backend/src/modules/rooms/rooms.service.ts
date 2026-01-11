@@ -17,11 +17,8 @@ export interface Room {
 
 @Injectable()
 export class RoomsService {
-  private rooms: Map<string, Room> = new Map([
-    ['1', { id: '1', name: 'General', membersList: [], members: 0, admin: null, pendingRequests: [], createdAt: new Date() }],
-    ['2', { id: '2', name: 'Tech Talk', membersList: [], members: 0, admin: null, pendingRequests: [], createdAt: new Date() }],
-    ['3', { id: '3', name: 'Random', membersList: [], members: 0, admin: null, pendingRequests: [], createdAt: new Date() }],
-  ]);
+  // Start with no pre-created rooms. Rooms are created by users via the API.
+  private rooms: Map<string, Room> = new Map();
 
   findAll(): Room[] {
     // ensure members count is in sync with membersList
