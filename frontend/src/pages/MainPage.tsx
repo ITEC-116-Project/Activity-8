@@ -126,16 +126,19 @@ useEffect(() => {
       const data = await response.json();
       if (data.success) {
         setRooms(data.rooms);
-        // If we have a currentRoom selected, update its object so member counts stay in sync
-        if (currentRoom) {
-          const updated = data.rooms.find((r: Room) => r.id === currentRoom.id);
-          if (updated) setCurrentRoom(updated);
-        }
+        // Update the currentRoom using a functional updater to avoid stale-closure
+        // issues when fetchRooms is called immediately after a setCurrentRoom call.
+        setCurrentRoom(prev => {
+          if (!prev) return prev;
+          const updated = data.rooms.find((r: Room) => r.id === prev.id);
+          return updated || prev;
+        });
       }
     } catch (error) {
       console.error('Failed to fetch rooms:', error);
     }
   };
+
 
   const handleJoinRoom = async (room: Room) => {
     // Leave previous room if any
